@@ -6,8 +6,8 @@ Beta distribution PDF is used to simulate the values.
 
 """
 
-ALPHA = 7.0
-BETA = 2.5
+ALPHA = 5.0
+BETA = 3.5
 MODE = (ALPHA - 1) / (ALPHA + BETA - 2)
 MAXIMUM_BETA_PDF_VALUE = beta.pdf(MODE, ALPHA, BETA)
 

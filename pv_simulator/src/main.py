@@ -1,6 +1,8 @@
 from datetime import datetime
+from pytz import timezone
 from callback_handler import create_callback
 from shared import connection_handler
+
 
 def main():
     """
@@ -8,7 +10,8 @@ def main():
     Handling the messages is delegated to the "callback_handler" package.
     """
     connection, channel, queue = connection_handler.setup_rabbitmq()
-    logs_timestamp = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
+    logs_timestamp = datetime.now(tz=timezone(
+        'Europe/Berlin')).strftime("%Y_%m_%d_%H_%M_%S")
     channel.basic_consume(queue=queue,
                           auto_ack=True,
                           on_message_callback=create_callback(logs_timestamp)

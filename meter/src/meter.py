@@ -6,6 +6,7 @@ from calculations.timestamp import simple_timestamp_generator, TIMESTAMP_STEP
 from calculations.meter_simulator import simple_meter_generator
 from shared.meter_output import MeterOutput
 
+
 def send_meter_values(channel, queue):
     """
     Function publishes serialized object containing timestamp and meter value.
@@ -24,6 +25,4 @@ def send_meter_values(channel, queue):
                               routing_key=queue,
                               body=body)
 
-        print(f"Timestamp: {timestamp_seconds} and meter value: {meter_value}"
-              " have been sent to the broker")
         time.sleep(TIMESTAMP_STEP / sending_speed)

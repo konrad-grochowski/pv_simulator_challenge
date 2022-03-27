@@ -14,11 +14,18 @@ It has to contain following values:
 
 After filling the common.env file, run:
 ```console
-docker-compose up --build
+docker-compose -f docker_compose_files/execution.yml up --build
 ```
 This will trigger building and executing the simulation. The log file will be created in /logs catalogue at the root of the repository.
 It will contain the following columns:
-1. Timestamp from midnight, in seconds
+1. Timestamp as seconds from midnight (simulation is started from midnight)
 2. Consumption value from the "meter" component
 3. Simulated PV power value
 4. Sum of consumption and PV power value.
+
+
+# Testing
+You can use unit tests to test the simulating functions used in both components:
+```console
+docker-compose -f docker_compose_files/unit_tests.yml up --build
+```

@@ -1,0 +1,11 @@
+FROM python:3
+
+WORKDIR /usr/src/app
+
+COPY ./meter/requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY ./meter/src ./src
+COPY ./shared ./shared
+COPY ./meter/test ./test
+CMD [ "python", "-m", "unittest"]
