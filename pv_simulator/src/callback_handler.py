@@ -1,7 +1,6 @@
 import pickle
 import time
 from datetime import datetime
-# import matplotlib.pyplot as plt
 import numpy as np
 from calculations import input_scaler, simulating_function
 from shared.meter_output import MeterOutput
