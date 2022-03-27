@@ -1,0 +1,35 @@
+version: '3'
+services:
+  rabbitmq:
+    image: 'rabbitmq:3.6-management-alpine'
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    env_file:
+    - ./common.env
+  meter:
+    environment:
+    -  PYTHONUNBUFFERED=1
+    -  RABBITMQ_HOST=rabbitmq
+    env_file:
+    - ./common.env
+    build:
+      context: ./
+      dockerfile: ./meter/dockerfiles/Dockerfile
+    restart: always
+    depends_on:
+      - "rabbitmq"
+  pv-simulator:
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_HOST=rabbitmq
+    env_file:
+    - ./common.env
+    build:
+      context: ./
+      dockerfile: ./pv_simulator/dockerfiles/Dockerfile
+    restart: always
+    volumes:
+      - ./logs:/usr/src/app/logs
+    depends_on:
+      - "rabbitmq"
