@@ -1,2 +1,4 @@
-pika
-scipy
+numpy~=1.22.3
+scipy~=1.8.0
+pika~=1.2.0
+pytz~=2021.1

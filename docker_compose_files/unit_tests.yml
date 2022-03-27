@@ -1,0 +1,14 @@
+version: '3'
+services:
+  meter:
+    environment:
+    -  PYTHONUNBUFFERED=1
+    build:
+      context: ../
+      dockerfile: ./meter/dockerfiles/Dockerfile_unit_tests
+  pv_simulator:
+      environment:
+      -  PYTHONUNBUFFERED=1
+      build:
+        context: ../
+        dockerfile: ./pv_simulator/dockerfiles/Dockerfile_unit_tests

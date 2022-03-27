@@ -6,17 +6,16 @@ services:
       - '5672:5672'
       - '15672:15672'
     env_file:
-    - ./common.env
+    - ../common.env
   meter:
     environment:
     -  PYTHONUNBUFFERED=1
     -  RABBITMQ_HOST=rabbitmq
     env_file:
-    - ./common.env
+    - ../common.env
     build:
-      context: ./
-      dockerfile: ./meter/dockerfiles/Dockerfile
-    restart: always
+      context: ../
+      dockerfile: ./meter/dockerfiles/Dockerfile_execution
     depends_on:
       - "rabbitmq"
   pv-simulator:
@@ -24,12 +23,11 @@ services:
     - PYTHONUNBUFFERED=1
     - RABBITMQ_HOST=rabbitmq
     env_file:
-    - ./common.env
+    - ../common.env
     build:
-      context: ./
-      dockerfile: ./pv_simulator/dockerfiles/Dockerfile
-    restart: always
+      context: ../
+      dockerfile: ./pv_simulator/dockerfiles/Dockerfile_execution
     volumes:
-      - ./logs:/usr/src/app/logs
+      - ../logs:/usr/src/app/logs
     depends_on:
       - "rabbitmq"
