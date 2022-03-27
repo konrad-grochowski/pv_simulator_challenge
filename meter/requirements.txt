@@ -1,2 +1,2 @@
-pika
-scipy
+numpy~=1.22.3
+pika~=1.2.0

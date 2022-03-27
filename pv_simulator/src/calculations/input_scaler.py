@@ -2,7 +2,7 @@
 This package uses the timestamp value that comes from the meter
 to create value from 0.0-1.0 range, which fits into beta distribution PDF.
 DAILY_POWER_START and DAILY_POWER_STOP values indicate range where the simulating function is used.
-This range is mapped into 0.0-1.0 range linearly.W
+This range is mapped into 0.0-1.0 range linearly.
 """
 
 HOUR_IN_SECONDS = 3600

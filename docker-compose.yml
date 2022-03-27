@@ -16,7 +16,6 @@ services:
     build:
       context: ./
       dockerfile: ./meter/dockerfiles/Dockerfile
-    restart: always
     depends_on:
       - "rabbitmq"
   pv-simulator:
@@ -28,7 +27,6 @@ services:
     build:
       context: ./
       dockerfile: ./pv_simulator/dockerfiles/Dockerfile
-    restart: always
     volumes:
       - ./logs:/usr/src/app/logs
     depends_on:

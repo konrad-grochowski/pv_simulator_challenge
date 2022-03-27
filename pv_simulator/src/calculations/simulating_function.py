@@ -11,9 +11,9 @@ BETA = 2.5
 MODE = (ALPHA - 1) / (ALPHA + BETA - 2)
 MAXIMUM_BETA_PDF_VALUE = beta.pdf(MODE, ALPHA, BETA)
 
-MAXIMUM_PV_SIMULATOR_VALUE_WATTS = 3250
+MAXIMUM_PV_SIMULATOR_VALUE_WATTS = 3250.0
 
-# Variable used to scale the function properly, so that the maximum is around 3250 watts.
+# Variable used to scale the function properly, so that the maximum is 3250 watts.
 SCALING_COEFF = MAXIMUM_PV_SIMULATOR_VALUE_WATTS / MAXIMUM_BETA_PDF_VALUE
 
 

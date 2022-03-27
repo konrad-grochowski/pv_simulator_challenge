@@ -1,30 +1,17 @@
 import time
 import os
 import pickle
+import numpy as np
+from calculations.timestamp import simple_timestamp_generator, TIMESTAMP_STEP
+from calculations.meter_simulator import simple_meter_generator
 from shared.meter_output import MeterOutput
-
-
-SECONDS_IN_DAY = 60 * 60 * 24
-TIMESTAMP_STEP = 25
-
-
-def simple_timestamp_generator():
-    return range(0, SECONDS_IN_DAY, TIMESTAMP_STEP)
-
-
-def simple_meter_generator():
-    for i in range(10000):
-        yield i
-    return
-
 
 def send_meter_values(channel, queue):
     """
     Function publishes serialized object containing timestamp and meter value.
     Timestamp value is number of seconds from midnight.
-    Function reads METER_SENDING_SPEED environment variable
-    The timeout in between sent messages equals to:
-        TIMESTAMP_STEP / sending_speed
+    The real simulation speed is multiplied by the value
+    contained in METER_SENDING_SPEED variable.
 
     """
     sending_speed = float(os.environ["METER_SENDING_SPEED"])
